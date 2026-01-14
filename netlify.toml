@@ -1,0 +1,4 @@
+[build]
+  base = "fullstack_app/frontend"
+  command = "npm run build"
+  publish = "build"
