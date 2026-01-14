@@ -6,7 +6,7 @@ function App() {
     const [b, setB] = useState(20);
 
     const callBackend = async () => {
-        const res = await fetch(`http://localhost:5000/api/add/${a}/${b}`);
+        const res = await fetch(`https://cppneobackend.onrender.com/api/add/${a}/${b}`);
         const data = await res.json();
         setResult(data.result);
     };
