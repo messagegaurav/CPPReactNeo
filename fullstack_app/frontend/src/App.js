@@ -1,13 +1,18 @@
 import { useState } from "react";
 
 function App() {
+    // State for calculation result
     const [result, setResult] = useState(null);
+    // Input values for addition
     const [a, setA] = useState(10);
     const [b, setB] = useState(20);
+    // Loading state for API call
     const [loading, setLoading] = useState(false);
 
+    // Function to call backend API
     const callBackend = async () => {
         setLoading(true);
+        // API call to backend
         const res = await fetch(`https://cppneobackend.onrender.com/api/add/${a}/${b}`);
         const data = await res.json();
         setResult(data.result);
