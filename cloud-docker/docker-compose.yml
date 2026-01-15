@@ -1,0 +1,24 @@
+# Production Docker Compose
+# For cloud deployment (Railway, Fly.io, etc.)
+
+services:
+  # Backend service (Node.js API)
+  backend:
+    build: 
+      context: ../fullstack_app/backend
+      dockerfile: ../../cloud-docker/backend/Dockerfile
+    environment:
+      - NODE_ENV=production
+      - PORT=${PORT:-5000}
+    restart: unless-stopped
+    
+  # Frontend service (React app)  
+  frontend:
+    build:
+      context: ../fullstack_app/frontend
+      dockerfile: ../../cloud-docker/frontend/Dockerfile
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    depends_on:
+      - backend

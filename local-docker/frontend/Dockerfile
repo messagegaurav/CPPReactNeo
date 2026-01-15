@@ -1,3 +1,4 @@
+# Local Development Frontend Dockerfile
 # Build stage
 FROM node:18-alpine as build
 
@@ -16,10 +17,13 @@ COPY . .
 # Build the app
 RUN npm run build
 
-# Production stage
+# Production stage with nginx
 FROM nginx:alpine
 
 # Copy built app to nginx
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Copy custom nginx config for local development
 COPY --from=build /app/build /usr/share/nginx/html
 
 # Expose port 80

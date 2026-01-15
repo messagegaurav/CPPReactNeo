@@ -1,0 +1,23 @@
+# Local Development Docker Compose
+# Usage: docker compose up --build
+
+services:
+  # Backend service (Node.js API)
+  backend:
+    build: 
+      context: ../fullstack_app/backend
+      dockerfile: ../../local-docker/backend/Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+    
+  # Frontend service (React app)
+  frontend:
+    build:
+      context: ../fullstack_app/frontend
+      dockerfile: ../../local-docker/frontend/Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend

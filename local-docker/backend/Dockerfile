@@ -1,4 +1,4 @@
-# Use Node.js 18 Alpine (lightweight)
+# Local Development Backend Dockerfile
 FROM node:18-alpine
 
 # Set working directory
@@ -16,5 +16,6 @@ COPY . .
 # Expose port 5000
 EXPOSE 5000
 
-# Start the server
-CMD ["node", "server.js"]
+# Start the server with nodemon for development
+RUN npm install -g nodemon
+CMD ["nodemon", "server.js"]
