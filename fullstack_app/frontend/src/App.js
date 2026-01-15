@@ -12,8 +12,8 @@ function App() {
     // Function to call backend API
     const callBackend = async () => {
         setLoading(true);
-        // API call to backend (Docker service name)
-        const res = await fetch(`http://backend:5000/api/add/${a}/${b}`);
+        // API call to backend (via Docker port mapping)
+        const res = await fetch(`http://localhost:5000/api/add/${a}/${b}`);
         const data = await res.json();
         setResult(data.result);
         setLoading(false);
