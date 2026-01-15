@@ -12,8 +12,8 @@ function App() {
     // Function to call backend API
     const callBackend = async () => {
         setLoading(true);
-        // API URL - uses environment variable for production, localhost for development
-        const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+        // API URL - temporarily hardcoded for Railway deployment
+        const API_URL = 'https://cppreactneo-production.up.railway.app';
         const res = await fetch(`${API_URL}/api/add/${a}/${b}`);
         const data = await res.json();
         setResult(data.result);
