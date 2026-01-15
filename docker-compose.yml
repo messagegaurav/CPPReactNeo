@@ -1,0 +1,26 @@
+# Docker Compose for fullstack app
+version: '3.8'
+
+services:
+  # Backend service (Node.js API)
+  backend:
+    build: ./fullstack_app/backend
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+    
+  # Frontend service (React app)
+  frontend:
+    build: ./fullstack_app/frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+# Create network for services to communicate
+networks:
+  app-network:
+    driver: bridge

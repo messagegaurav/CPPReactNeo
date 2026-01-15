@@ -12,8 +12,8 @@ function App() {
     // Function to call backend API
     const callBackend = async () => {
         setLoading(true);
-        // API call to backend
-        const res = await fetch(`https://cppneobackend.onrender.com/api/add/${a}/${b}`);
+        // API call to backend (local Docker container)
+        const res = await fetch(`http://localhost:5000/api/add/${a}/${b}`);
         const data = await res.json();
         setResult(data.result);
         setLoading(false);
